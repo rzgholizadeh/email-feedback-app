@@ -4,7 +4,7 @@ const express = require("express");
 const app = express();
 //  a heelo world rout handler
 app.get("/", (req, res) => {
-  res.send({ hi: "there" });
+  res.send({ bye: "guys" });
 });
 
 // Setting the port deynamically (for Herouko), or 5000 for local machine
