@@ -7,4 +7,6 @@ app.get("/", (req, res) => {
   res.send({ hi: "there" });
 });
 
-app.listen(5000);
+// Setting the port deynamically (for Herouko), or 5000 for local machine
+const PORT = process.env.PORT || 5000;
+app.listen(PORT);
