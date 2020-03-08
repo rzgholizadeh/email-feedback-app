@@ -4,6 +4,22 @@ const mongoose = require("mongoose");
 const keys = require("../config/keys");
 // fetching the model from mongoose
 const User = mongoose.model("users");
+// user is the opbject passport (done function) is returning (the one we created or got our of the database)
+passport.serializeUser((user, done) => {
+  // done is the callback for passport
+  // user.id is the id of the user object in the database (assigned by mongo itself), not the googleId property
+  // we use user id for the cookie because we may want to have other oauth (like facebook) and google profile id won't work
+  // for that
+  done(null, user.id);
+});
+// deserialize user
+passport.deserializeUser((id, done) => {
+  // query the DB to find the user for the id
+  // Async action
+  User.findById(id).then(user => {
+    done(null, user);
+  });
+});
 // tell passport to ues google strategy with configuration: client ID and client secret
 passport.use(
   new GoogleStrategy(
