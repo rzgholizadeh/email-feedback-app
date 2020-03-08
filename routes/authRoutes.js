@@ -8,8 +8,6 @@ module.exports = app => {
       scope: ["profile", "email"]
     })
   );
-  //routhandler
-
   // routhandler for the callbackURL - tell passport to handle the callback
   app.get("/auth/google/callback", passport.authenticate("google"));
   // routhandler for logout
