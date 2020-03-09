@@ -12,7 +12,7 @@ function App() {
         </p>
         <a
           className="App-link"
-          href="http://localhost:5000/auth/google"
+          href="/auth/google"
           target="_blank"
           rel="noopener noreferrer"
         >
