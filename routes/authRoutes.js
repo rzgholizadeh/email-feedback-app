@@ -9,7 +9,13 @@ module.exports = app => {
     })
   );
   // routhandler for the callbackURL - tell passport to handle the callback
-  app.get("/auth/google/callback", passport.authenticate("google"));
+  app.get(
+    "/auth/google/callback",
+    passport.authenticate("google"),
+    (req, res) => {
+      res.redirect("/surveys");
+    }
+  );
   // routhandler for logout
   app.get("/api/logout", (req, res) => {
     req.logout();
