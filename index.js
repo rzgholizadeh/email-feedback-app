@@ -7,6 +7,7 @@ const bodyParser = require("body-parser");
 const keys = require("./config/keys");
 // the order is important! The model should be created first
 require("./models/User");
+require("./models/Survey");
 require("./services/passport");
 
 // connect to mongoDB database
@@ -24,8 +25,10 @@ app.use(
 // tell passport to use cookie authentication
 app.use(passport.initialize());
 app.use(passport.session());
+// import all route handlers
 require("./routes/authRoutes")(app);
 require("./routes/billingRoutes")(app);
+require("./routes/surveyRoutes")(app);
 
 // for production environment behaviour
 if (process.env.NODE_ENV === "production") {
