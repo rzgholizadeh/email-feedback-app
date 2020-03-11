@@ -12,5 +12,4 @@ const surveySchema = new Schema({
   dateSent: Date,
   lastResponded: Date
 });
-// create the model class in mongoose
 mongoose.model("surveys", surveySchema);

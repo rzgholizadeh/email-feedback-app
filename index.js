@@ -25,8 +25,10 @@ app.use(
 // tell passport to use cookie authentication
 app.use(passport.initialize());
 app.use(passport.session());
+// import all route handlers
 require("./routes/authRoutes")(app);
 require("./routes/billingRoutes")(app);
+require("./routes/surveyRoutes")(app);
 
 // for production environment behaviour
 if (process.env.NODE_ENV === "production") {
