@@ -7,6 +7,7 @@ const bodyParser = require("body-parser");
 const keys = require("./config/keys");
 // the order is important! The model should be created first
 require("./models/User");
+require("./models/Survey");
 require("./services/passport");
 
 // connect to mongoDB database
