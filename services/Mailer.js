@@ -30,7 +30,7 @@ class Mailer extends helper.Mail {
   }
 
   addRecipients() {
-    const personalize = new helper.personalization();
+    const personalize = new helper.Personalization();
     this.recipients.forEach(recipient => {
       personalize.addTo(recipient);
     });
@@ -42,7 +42,7 @@ class Mailer extends helper.Mail {
     const request = this.sgApi.emptyRequest({
       method: "POST",
       path: "/v3/mail/send",
-      body: this.toJASON()
+      body: this.toJSON()
     });
     // await?!
     const response = this.sgApi.API(request);
