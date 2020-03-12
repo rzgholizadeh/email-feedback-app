@@ -3,27 +3,24 @@ import React, { Component } from "react";
 import { reduxForm, Field } from "redux-form";
 import { Link } from "react-router-dom";
 import SurveyField from "./SurveyField";
+import validateEmails from "../../utils/validateEmails";
 
 const FIELDS = [
   {
     label: "Survey Title",
-    name: "title",
-    noValueError: "* You must provide the title"
+    name: "title"
   },
   {
     label: "Subject Line",
-    name: "subject",
-    noValueError: "You must provide the subject"
+    name: "subject"
   },
   {
     label: "Email Body",
-    name: "body",
-    noValueError: "* You must provide the body"
+    name: "body"
   },
   {
     label: "Recipient List",
-    name: "emails",
-    noValueError: "* You must provide at least one email"
+    name: "emails"
   }
 ];
 
@@ -62,11 +59,11 @@ class SurveyForm extends Component {
 // is validate a built-in function? - probably yes
 function validate(values) {
   const errors = {};
-
+  errors.emails = validateEmails(values.emails || "");
   // No value error
-  _.each(FIELDS, ({ name, noValueError }) => {
+  _.each(FIELDS, ({ name }) => {
     if (!values[name]) {
-      errors[name] = noValueError;
+      errors[name] = "* You must provide a value";
     }
   });
   return errors;
