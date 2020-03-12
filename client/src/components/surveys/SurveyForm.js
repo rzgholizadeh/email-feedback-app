@@ -41,7 +41,7 @@ class SurveyForm extends Component {
 // is validate a built-in function? - probably yes
 function validate(values) {
   const errors = {};
-  errors.emails = validateEmails(values.emails || "");
+  errors.recipients = validateEmails(values.recipients || "");
   // No value error
   _.each(formFields, ({ name }) => {
     if (!values[name]) {
