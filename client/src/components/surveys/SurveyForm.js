@@ -5,10 +5,26 @@ import { Link } from "react-router-dom";
 import SurveyField from "./SurveyField";
 
 const FIELDS = [
-  { label: "Survey Title", name: "title" },
-  { label: "Subject Line", name: "subject" },
-  { label: "Email Body", name: "body" },
-  { label: "Recipient List", name: "emails" }
+  {
+    label: "Survey Title",
+    name: "title",
+    noValueError: "* You must provide the title"
+  },
+  {
+    label: "Subject Line",
+    name: "subject",
+    noValueError: "You must provide the subject"
+  },
+  {
+    label: "Email Body",
+    name: "body",
+    noValueError: "* You must provide the body"
+  },
+  {
+    label: "Recipient List",
+    name: "emails",
+    noValueError: "* You must provide at least one email"
+  }
 ];
 
 class SurveyForm extends Component {
@@ -43,6 +59,20 @@ class SurveyForm extends Component {
   }
 }
 
+// is validate a built-in function? - probably yes
+function validate(values) {
+  const errors = {};
+
+  // No value error
+  _.each(FIELDS, ({ name, noValueError }) => {
+    if (!values[name]) {
+      errors[name] = noValueError;
+    }
+  });
+  return errors;
+}
+
 export default reduxForm({
+  validate,
   form: "surveyForm"
 })(SurveyForm);
