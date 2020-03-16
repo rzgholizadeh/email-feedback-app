@@ -1,6 +1,13 @@
 # email-feedback-app
 This is a web application for sending emails to customers and requesting feedback.
 The project is developed with the help of tutorials from [Node with React Web Development](https://www.udemy.com/course/node-with-react-fullstack-web-development/) course in Udemy.
+# Deployment
+The app is deployed on Heroko cloud. It can be reached at [here](https://email-app-node-react.herokuapp.com/).
+- You can login with your google acount.
+- You can use 4242-4242-4242-4242 as test credit card number.
+- You can use any future date as expiration date.
+- You can use any number as CVC.
+- The emails in the recipients field while creating surveys should be comma separated.
 # Technologies and Frameworks
 - Node.js Express
 - MongoDB
